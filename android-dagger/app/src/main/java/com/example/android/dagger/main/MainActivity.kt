@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var mainViewModel: MainViewModel
 
-    @Inject
-    lateinit var userManager : UserManager
+//    @Inject
+//    lateinit var userManager : UserManager
 
     /**
      * If the User is not registered, RegistrationActivity will be launched,
@@ -44,12 +44,14 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        (application as MyApplication).appComponent.inject(this)
+//        (application as MyApplication).appComponent.inject(this)
 
         super.onCreate(savedInstanceState)
 
         //これもDaggerにする
 //        val userManager = (application as MyApplication).userManager
+        val userManager = (application as MyApplication).appComponent.userManager()
+
         if (!userManager.isUserLoggedIn()) {
             if (!userManager.isUserRegistered()) {
                 startActivity(Intent(this, RegistrationActivity::class.java))
@@ -60,6 +62,9 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             setContentView(R.layout.activity_main)
+
+            //ユーザーがログインしている時だけuserComponentが利用できる
+            userManager.userComponent!!.inject(this)
 
 //            mainViewModel = MainViewModel(userManager.userDataRepository!!)
             setupViews()
