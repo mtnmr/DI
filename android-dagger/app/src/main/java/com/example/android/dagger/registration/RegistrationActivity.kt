@@ -28,6 +28,8 @@ import javax.inject.Inject
 
 class RegistrationActivity : AppCompatActivity() {
 
+    lateinit var registrationComponent: RegistrationComponent
+
     @Inject
     lateinit var registrationViewModel: RegistrationViewModel
 
@@ -35,7 +37,11 @@ class RegistrationActivity : AppCompatActivity() {
 
         //AppComponentのInjectを呼び出すと、@Injectで宣言したviewModelに値が入る
         //super.onCreateの間に書くこと！
-        (application as MyApplication).appComponent.inject(this)
+//        (application as MyApplication).appComponent.inject(this)
+
+        //registrationViewModelを他のfragmentでも共有するけど、activityが再生成された時は作り直したい
+        registrationComponent = (application as MyApplication).appComponent.registrationComponent().create()
+        registrationComponent.inject(this)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
