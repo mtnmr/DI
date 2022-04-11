@@ -3,12 +3,15 @@ package com.example.android.dagger.di
 import android.content.Context
 import com.example.android.dagger.main.MainActivity
 import com.example.android.dagger.registration.RegistrationActivity
+import com.example.android.dagger.registration.RegistrationComponent
+import com.example.android.dagger.registration.enterdetails.EnterDetailsFragment
+import com.example.android.dagger.registration.termsandconditions.TermsAndConditionsFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [StorageModule::class])
+@Component(modules = [StorageModule::class, AppSubcomponents::class])
 interface AppComponent {
 
     //Storageはcontextを引数に持つ、ContextはAndroidシステムから提供される（グラフの外側で構築される）
@@ -19,7 +22,9 @@ interface AppComponent {
         fun create(@BindsInstance context: Context) : AppComponent
     }
 
-    fun inject(activity: RegistrationActivity)
+    //RegistrationComponentファクトリーを公開するには、このクラスを戻り値として関数を宣言する
+    fun registrationComponent(): RegistrationComponent.Factory
+
 
     fun inject(activity: MainActivity)
 }
