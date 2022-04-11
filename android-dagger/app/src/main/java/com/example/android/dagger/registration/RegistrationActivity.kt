@@ -32,9 +32,15 @@ class RegistrationActivity : AppCompatActivity() {
     lateinit var registrationViewModel: RegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        //AppComponentのInjectを呼び出すと、@Injectで宣言したviewModelに値が入る
+        //super.onCreateの間に書くこと！
+        (application as MyApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
+//Daggerに以降するためviewModelのインスタンス化は不要
 //        registrationViewModel = RegistrationViewModel((application as MyApplication).userManager)
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_holder, EnterDetailsFragment())
