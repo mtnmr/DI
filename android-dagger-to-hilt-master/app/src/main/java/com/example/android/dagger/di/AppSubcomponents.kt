@@ -29,7 +29,7 @@ import dagger.hilt.migration.DisableInstallInCheck
 @Module(
     subcomponents = [
         RegistrationComponent::class,
-        LoginComponent::class,
+//        LoginComponent::class,
         UserComponent::class
     ]
 )
