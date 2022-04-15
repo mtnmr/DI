@@ -26,20 +26,22 @@ import com.example.android.dagger.registration.enterdetails.EnterDetailsFragment
 import com.example.android.dagger.registration.termsandconditions.TermsAndConditionsFragment
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class RegistrationActivity : AppCompatActivity() {
 
-    @InstallIn(SingletonComponent::class)
-    @EntryPoint
-    interface RegistrationEntryPoint{
-        fun registrationComponent() : RegistrationComponent.Factory
-    }
+//    @InstallIn(SingletonComponent::class)
+//    @EntryPoint
+//    interface RegistrationEntryPoint{
+//        fun registrationComponent() : RegistrationComponent.Factory
+//    }
 
     // Stores an instance of RegistrationComponent so that its Fragments can access it
-    lateinit var registrationComponent: RegistrationComponent
+//    lateinit var registrationComponent: RegistrationComponent
 
     // @Inject annotated fields will be provided by Dagger
     @Inject
@@ -54,12 +56,12 @@ class RegistrationActivity : AppCompatActivity() {
 //
 
         //Hilt
-        val entryPoint = EntryPointAccessors.fromApplication(applicationContext, RegistrationEntryPoint::class.java)
-        registrationComponent = entryPoint.registrationComponent().create()
+//        val entryPoint = EntryPointAccessors.fromApplication(applicationContext, RegistrationEntryPoint::class.java)
+//        registrationComponent = entryPoint.registrationComponent().create()
 
 
         // Injects this activity to the just created Registration component
-        registrationComponent.inject(this)
+//        registrationComponent.inject(this)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)

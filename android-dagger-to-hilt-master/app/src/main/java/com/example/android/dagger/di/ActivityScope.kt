@@ -18,7 +18,10 @@ package com.example.android.dagger.di
 
 import javax.inject.Scope
 
-@Scope
-@MustBeDocumented
-@Retention(value = AnnotationRetention.RUNTIME)
-annotation class ActivityScope
+//Hiltに移行したことでこのスコープは使わなくなった
+//Hiltが提供している@ActivityScopedに変更
+
+//@Scope
+//@MustBeDocumented
+//@Retention(value = AnnotationRetention.RUNTIME)
+//annotation class ActivityScope
