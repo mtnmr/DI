@@ -19,6 +19,7 @@ package com.example.android.dagger.settings
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.dagger.MyApplication
 import com.example.android.dagger.R
@@ -33,8 +34,9 @@ import javax.inject.Inject
 class SettingsActivity : AppCompatActivity() {
 
     // @Inject annotated fields will be provided by Dagger
-    @Inject
-    lateinit var settingsViewModel: SettingsViewModel
+//    @Inject
+//    lateinit var settingsViewModel: SettingsViewModel
+    private val settingsViewModel : SettingsViewModel by viewModels()
 
     @Inject
     lateinit var userManager: UserManager

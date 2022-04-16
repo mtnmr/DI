@@ -20,6 +20,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.dagger.MyApplication
 import com.example.android.dagger.R
@@ -31,6 +32,7 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 
@@ -44,8 +46,10 @@ class MainActivity : AppCompatActivity() {
 //    }
 
     // @Inject annotated fields will be provided by Dagger
-    @Inject
-    lateinit var mainViewModel: MainViewModel
+//    @Inject
+//    lateinit var mainViewModel: MainViewModel
+
+    private val mainViewModel: MainViewModel by viewModels()
 
     @Inject
     lateinit var userManager : UserManager
