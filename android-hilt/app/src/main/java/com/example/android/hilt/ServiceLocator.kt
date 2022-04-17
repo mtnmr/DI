@@ -25,19 +25,19 @@ import com.example.android.hilt.navigator.AppNavigator
 import com.example.android.hilt.navigator.AppNavigatorImpl
 import com.example.android.hilt.util.DateFormatter
 
-class ServiceLocator(applicationContext: Context) {
-
-    private val logsDatabase = Room.databaseBuilder(
-        applicationContext,
-        AppDatabase::class.java,
-        "logging.db"
-    ).build()
-
-    val loggerLocalDataSource = LoggerLocalDataSource(logsDatabase.logDao())
-
-    fun provideDateFormatter() = DateFormatter()
-
-    fun provideNavigator(activity: FragmentActivity): AppNavigator {
-        return AppNavigatorImpl(activity)
-    }
-}
+//class ServiceLocator(applicationContext: Context) {
+//
+//    private val logsDatabase = Room.databaseBuilder(
+//        applicationContext,
+//        AppDatabase::class.java,
+//        "logging.db"
+//    ).build()
+//
+//    val loggerLocalDataSource = LoggerLocalDataSource(logsDatabase.logDao())
+//
+//    fun provideDateFormatter() = DateFormatter()
+//
+//    fun provideNavigator(activity: FragmentActivity): AppNavigator {
+//        return AppNavigatorImpl(activity)
+//    }
+//}
